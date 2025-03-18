@@ -2,8 +2,8 @@ package org.albertomut.productsapi.application
 
 import org.albertomut.productsapi.domain.DiscountService
 import org.albertomut.productsapi.domain.DiscountServiceImpl
-import org.albertomut.productsapi.domain.application.ProductService
-import org.albertomut.productsapi.domain.application.ProductServiceImpl
+import org.albertomut.productsapi.application.ProductService
+import org.albertomut.productsapi.application.ProductServiceImpl
 import org.albertomut.productsapi.domain.models.Discount
 import org.albertomut.productsapi.domain.models.Product
 import org.albertomut.productsapi.infrastructure.persistence.ProductEntity

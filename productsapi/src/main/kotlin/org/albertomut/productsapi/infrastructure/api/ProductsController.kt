@@ -1,6 +1,6 @@
 package org.albertomut.productsapi.infrastructure.api
 
-import org.albertomut.productsapi.domain.application.ProductService
+import org.albertomut.productsapi.application.ProductService
 import org.albertomut.productsapi.domain.models.Product
 import org.springframework.data.domain.Page
 import org.springframework.http.ResponseEntity

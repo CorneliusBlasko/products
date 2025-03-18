@@ -1,4 +1,4 @@
-package org.albertomut.productsapi.domain.application
+package org.albertomut.productsapi.application
 
 import org.albertomut.productsapi.domain.DiscountService
 import org.albertomut.productsapi.domain.models.Product
