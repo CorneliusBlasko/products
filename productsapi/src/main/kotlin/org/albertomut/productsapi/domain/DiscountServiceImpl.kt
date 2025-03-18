@@ -9,23 +9,25 @@ import java.math.BigDecimal
 class DiscountServiceImpl : DiscountService {
 
     override fun calculateDiscount(product: Product): Discount {
-        var discountPercentage = BigDecimal("0.00")
+        return Discount.builder()
+            .percentage(applyDiscount(product))
+            .build()
+    }
+
+    fun applyDiscount(product: Product): BigDecimal {
 
         if (product.sku.endsWith("5")) {
-            discountPercentage = BigDecimal("0.30")
-            return Discount(discountPercentage)
+            return BigDecimal("0.30")
         }
 
         if (product.category.equals("Home & Kitchen", ignoreCase = true)) {
-            discountPercentage = BigDecimal("0.25")
-            return Discount(discountPercentage)
+            return BigDecimal("0.25")
         }
 
         if (product.category.equals("Electronics", ignoreCase = true)) {
-            discountPercentage = BigDecimal("0.15")
-            return Discount(discountPercentage)
+            return BigDecimal("0.15")
         }
 
-        return Discount(discountPercentage)
+        return BigDecimal("0.00")
     }
 }
