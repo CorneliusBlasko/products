@@ -7,7 +7,6 @@ import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Service
-import java.math.BigDecimal
 import java.math.RoundingMode
 
 @Service
@@ -17,6 +16,7 @@ class ProductServiceImpl (
 ) : ProductService {
 
     override fun getProducts(category: String?, sortingTerm: String?, descending: Boolean, page: Int, size: Int): Page<Product> {
+
         val pageable = PageRequest.of(page, size, sortedBy(sortingTerm, descending))
 
         val productPage = category?.let {
