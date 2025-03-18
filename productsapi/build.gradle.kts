@@ -14,12 +14,16 @@ repositories {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
 
     // TEST DEPENDENCIES
     testImplementation(kotlin("test"))
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.0")
+
+    implementation ("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation ("org.postgresql:postgresql:42.7.5")
 }
 
 tasks.test {
