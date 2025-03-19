@@ -28,6 +28,10 @@ class ProductsController(
         @RequestParam(defaultValue = "10") size: Int,
         @RequestParam(defaultValue = "false") descending: Boolean
     ): ResponseEntity<Page<Product>> {
+        val validSortFields = listOf("price", "description", "createdAt")
+        if (sort != null && !validSortFields.contains(sort.lowercase())) {
+            return ResponseEntity.badRequest().body(Page.empty())
+        }
         val products = productService.getProducts(category, sort, descending, page, size)
         return ResponseEntity.ok(products)
     }

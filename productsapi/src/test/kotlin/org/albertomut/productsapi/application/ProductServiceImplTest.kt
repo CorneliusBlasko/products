@@ -126,7 +126,6 @@ class ProductServiceImplTest {
     fun `getProducts should sort by createdAt`() {
         val now = LocalDateTime.now()
         productEntity1 = ProductEntity("SKU0001", BigDecimal("19.99"), "Wireless Mouse with ergonomic design", "Electronics", now)
-        //Discounted price should be 22.12
         productEntity2 = ProductEntity("SKU0003", BigDecimal("29.50"), "A Stainless Steel Water Bottle, 1L", "Home & Kitchen", now.plusSeconds(1L))
         val pageable = PageRequest.of(0, 10, Sort.by(Sort.Direction.ASC,"createdAt"))
         val productEntities = listOf(productEntity1, productEntity2)
