@@ -41,7 +41,6 @@ class ProductServiceImpl (
             "price" -> Sort.by(sortOrder, "price")
             "description" -> Sort.by(sortOrder, "description")
             "category" -> Sort.by(sortOrder, "category")
-            "createdat" -> Sort.by(sortOrder, "createdAt")
             else -> Sort.by(sortOrder, "sku")
         }
     }

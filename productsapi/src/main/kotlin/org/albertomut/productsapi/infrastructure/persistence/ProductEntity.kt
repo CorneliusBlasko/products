@@ -1,11 +1,11 @@
 package org.albertomut.productsapi.infrastructure.persistence
 
+import jakarta.persistence.Entity
+import jakarta.persistence.Id
+import jakarta.persistence.Table
 import org.albertomut.productsapi.domain.models.Product
 import java.math.BigDecimal
 import java.time.LocalDateTime
-import javax.persistence.Entity
-import javax.persistence.Id
-import javax.persistence.Table
 
 @Entity
 @Table(name = "products")

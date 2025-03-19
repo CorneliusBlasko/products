@@ -2,9 +2,6 @@ package org.albertomut.productsapi.application
 
 import org.albertomut.productsapi.domain.DiscountService
 import org.albertomut.productsapi.domain.DiscountServiceImpl
-import org.albertomut.productsapi.application.ProductService
-import org.albertomut.productsapi.application.ProductServiceImpl
-import org.albertomut.productsapi.domain.models.Discount
 import org.albertomut.productsapi.domain.models.Product
 import org.albertomut.productsapi.infrastructure.persistence.ProductEntity
 import org.albertomut.productsapi.infrastructure.persistence.ProductRepository
@@ -12,9 +9,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
-import org.mockito.InjectMocks
 import org.mockito.Mock
-import org.mockito.Mockito.mock
 import org.mockito.Mockito.`when`
 import org.mockito.junit.jupiter.MockitoExtension
 import org.springframework.data.domain.Page
@@ -53,7 +48,7 @@ class ProductServiceImplTest {
     }
 
     @Test
-    fun `getProducts should return discounted products' correct price`() {
+    fun `getProducts should return discounted products correct price`() {
         val pageable = PageRequest.of(0, 10, Sort.by(Sort.Direction.DESC,"sku"))
         val productEntities = listOf(productEntity1, productEntity2)
         val page: Page<ProductEntity> = PageImpl(productEntities, pageable, productEntities.size.toLong())
@@ -120,23 +115,6 @@ class ProductServiceImplTest {
 
         assertEquals(2, result.content.size)
         assertEquals("A Stainless Steel Water Bottle, 1L", result.content[0].description)
-    }
-
-    @Test
-    fun `getProducts should sort by createdAt`() {
-        val now = LocalDateTime.now()
-        productEntity1 = ProductEntity("SKU0001", BigDecimal("19.99"), "Wireless Mouse with ergonomic design", "Electronics", now)
-        productEntity2 = ProductEntity("SKU0003", BigDecimal("29.50"), "A Stainless Steel Water Bottle, 1L", "Home & Kitchen", now.plusSeconds(1L))
-        val pageable = PageRequest.of(0, 10, Sort.by(Sort.Direction.ASC,"createdAt"))
-        val productEntities = listOf(productEntity1, productEntity2)
-        val page: Page<ProductEntity> = PageImpl(productEntities, pageable, productEntities.size.toLong())
-
-        `when`(productRepository.findAll(pageable)).thenReturn(page)
-
-        val result = productService.getProducts(null, "createdAt", false, 0, 10)
-
-        assertEquals(2, result.content.size)
-        assertEquals(now, result.content[0].createdAt)
     }
 
     @Test

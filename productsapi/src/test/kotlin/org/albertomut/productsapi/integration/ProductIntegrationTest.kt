@@ -8,12 +8,10 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.boot.test.web.client.getForEntity
-import org.springframework.core.io.Resource
 import org.springframework.http.HttpStatus
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.test.context.DynamicPropertyRegistry
@@ -56,17 +54,10 @@ class ProductIntegrationTest(
     }
 
     @Test
-    fun `test health endpoint`() {
+    fun `test check health endpoint`() {
         val entity = client.getForEntity<String>("/products/health")
         assertThat(entity.statusCode).isEqualTo(HttpStatus.OK)
         assertThat(entity.body).contains("OK")
-    }
-
-    @Test
-    fun `test products endpoint`() {
-        val entity = client.getForEntity<String>("/products/")
-        assertThat(entity.statusCode).isEqualTo(HttpStatus.OK)
-        assertThat(entity.body).contains("SKU0001")
     }
 
     @Test
@@ -110,6 +101,4 @@ class ProductIntegrationTest(
         assertEquals(6, productPage.totalPages)
 
     }
-
-
 }

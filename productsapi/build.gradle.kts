@@ -2,7 +2,7 @@ plugins {
     kotlin("jvm") version "2.1.10"
     kotlin("plugin.spring") version "2.1.0"
     kotlin("plugin.jpa") version "2.1.0"
-    id("org.springframework.boot") version "2.7.5"
+    id("org.springframework.boot") version "3.4.3"
     id("io.spring.dependency-management") version "1.0.15.RELEASE"
 }
 
@@ -20,8 +20,6 @@ dependencies {
     // TEST DEPENDENCIES
     testImplementation(kotlin("test"))
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.0")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.0")
 
     // INTEGRATION TESTING DEPENDENCIES
     testImplementation("org.testcontainers:testcontainers:1.20.6")
@@ -35,6 +33,10 @@ dependencies {
     // MAPPING DEPENDENCIES
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
+
+    // OPENAPI DEPENDENCIES
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.5")
+
 
 }
 
